@@ -1,5 +1,4 @@
 // Get backend URL from environment or fallback
-const BACKEND_URL = 'https://college-scout-hub-1.preview.emergentagent.com';
 const API_URL = `${BACKEND_URL}/api`;
 
 // Navbar scroll effect
