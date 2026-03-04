@@ -1,5 +1,4 @@
 // Get backend URL
-const BACKEND_URL = 'https://college-scout-hub-1.preview.emergentagent.com';
 const API_URL = `${BACKEND_URL}/api`;
 
 // Tab switching
