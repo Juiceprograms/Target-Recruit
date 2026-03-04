@@ -3,1021 +3,378 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Target Recruiter - Connect Athletes & College Programs</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://unpkg.com/lucide@latest"></script>
+    <title>Target Recruit - The Future of Athletic Recruitment</title>
+    
+    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS via CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
             theme: {
                 extend: {
-                    fontFamily: {
-                        sans: ['Inter', 'sans-serif'],
-                    },
                     colors: {
-                        brand: {
-                            50: '#f0f9ff',
-                            100: '#e0f2fe',
-                            200: '#bae6fd',
-                            300: '#7dd3fc',
-                            400: '#38bdf8',
-                            500: '#0ea5e9',
-                            600: '#0284c7',
-                            700: '#0369a1',
-                            800: '#075985',
-                            900: '#0c4a6e',
-                        },
-                        athlete: {
-                            500: '#10b981',
-                            600: '#059669',
-                        },
-                        coach: {
-                            500: '#8b5cf6',
-                            600: '#7c3aed',
-                        }
-                    }
+                        obsidian: '#0A0A0A',
+                        surface: '#121212',
+                        'surface-highlight': '#1A1A1A',
+                        electric: '#2563EB',
+                        volt: '#CCFF00',
+                    },
+                    fontFamily: {
+                        heading: ['Barlow Condensed', 'sans-serif'],
+                        body: ['Inter', 'sans-serif'],
+                        mono: ['monospace'],
+                    },
                 }
             }
         }
     </script>
-    <style>
-        .gradient-text {
-            background: linear-gradient(135deg, #0ea5e9 0%, #8b5cf6 50%, #10b981 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-        .hero-gradient {
-            background: linear-gradient(135deg, #0c4a6e 0%, #1e1b4b 50%, #064e3b 100%);
-        }
-        .card-hover {
-            transition: all 0.3s ease;
-        }
-        .card-hover:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 20px 40px -12px rgba(0, 0, 0, 0.25);
-        }
-        .pulse-ring {
-            animation: pulse-ring 2s cubic-bezier(0.215, 0.61, 0.355, 1) infinite;
-        }
-        @keyframes pulse-ring {
-            0% { transform: scale(0.8); opacity: 0.8; }
-            50% { transform: scale(1); opacity: 0.4; }
-            100% { transform: scale(0.8); opacity: 0.8; }
-        }
-        .slide-in {
-            animation: slideIn 0.5s ease-out;
-        }
-        @keyframes slideIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        .tab-active {
-            border-bottom: 2px solid #0ea5e9;
-            color: #0ea5e9;
-        }
-    </style>
+    
+    <!-- Custom Styles -->
+    <link rel="stylesheet" href="css/style.css">
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
 </head>
-<body class="font-sans text-slate-800 bg-slate-50">
-    <!-- Navigation -->
-    <nav class="fixed top-0 left-0 right-0 bg-white/95 backdrop-blur-md border-b border-slate-200 z-50">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between items-center h-16">
-                <div class="flex items-center space-x-2">
-                    <div class="w-10 h-10 bg-gradient-to-br from-brand-500 to-brand-700 rounded-xl flex items-center justify-center">
-                        <i data-lucide="target" class="w-6 h-6 text-white"></i>
-                    </div>
-                    <span class="text-xl font-bold text-slate-900">Target Recruiter</span>
-                </div>
-                <div class="hidden md:flex items-center space-x-8">
-                    <a href="#features" class="text-slate-600 hover:text-brand-600 font-medium transition">Features</a>
-                    <a href="#how-it-works" class="text-slate-600 hover:text-brand-600 font-medium transition">How It Works</a>
-                    <a href="#success-stories" class="text-slate-600 hover:text-brand-600 font-medium transition">Success Stories</a>
-                    <a href="#pricing" class="text-slate-600 hover:text-brand-600 font-medium transition">Pricing</a>
-                </div>
-                <div class="flex items-center space-x-4">
-                    <button onclick="showModal('login')" class="hidden md:block text-slate-600 hover:text-slate-900 font-medium">Log In</button>
-                    <button onclick="showModal('role-select')" class="bg-brand-600 hover:bg-brand-700 text-white px-5 py-2.5 rounded-lg font-medium transition">Get Started</button>
-                </div>
+<body class="bg-obsidian text-white">
+    <!-- Navbar -->
+    <nav id="navbar" class="fixed top-0 w-full z-50 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-6 md:px-12 py-4 flex items-center justify-between">
+            <a href="/" class="flex items-center gap-2">
+                <i data-lucide="target" class="w-8 h-8 text-electric"></i>
+                <span class="font-heading font-bold text-xl uppercase tracking-wider text-white">
+                    Target<span class="text-volt">Recruit</span>
+                </span>
+            </a>
+
+            <div class="hidden md:flex items-center gap-10">
+                <a href="#athletes" class="text-gray-400 hover:text-white transition-colors text-sm uppercase tracking-wider font-medium">For Athletes</a>
+                <a href="#coaches" class="text-gray-400 hover:text-white transition-colors text-sm uppercase tracking-wider font-medium">For Coaches</a>
+                <a href="#features" class="text-gray-400 hover:text-white transition-colors text-sm uppercase tracking-wider font-medium">Features</a>
+                <a href="#how-it-works" class="text-gray-400 hover:text-white transition-colors text-sm uppercase tracking-wider font-medium">How It Works</a>
+            </div>
+
+            <button onclick="window.location.href='auth.html'" class="hidden md:flex bg-electric hover:bg-electric/90 text-white font-bold uppercase tracking-wider px-6 py-2 rounded-sm shadow-[0_0_15px_rgba(37,99,235,0.4)] transition-all hover:scale-105">
+                Get Started
+            </button>
+
+            <button id="mobile-menu-btn" class="md:hidden text-white">
+                <i data-lucide="menu" class="w-6 h-6"></i>
+            </button>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-surface border-b border-white/5 px-6 py-6">
+            <div class="flex flex-col gap-4">
+                <a href="#athletes" class="text-gray-400 hover:text-white transition-colors text-sm uppercase tracking-wider font-medium py-2">For Athletes</a>
+                <a href="#coaches" class="text-gray-400 hover:text-white transition-colors text-sm uppercase tracking-wider font-medium py-2">For Coaches</a>
+                <a href="#features" class="text-gray-400 hover:text-white transition-colors text-sm uppercase tracking-wider font-medium py-2">Features</a>
+                <a href="#how-it-works" class="text-gray-400 hover:text-white transition-colors text-sm uppercase tracking-wider font-medium py-2">How It Works</a>
+                <button onclick="window.location.href='auth.html'" class="bg-electric hover:bg-electric/90 text-white font-bold uppercase tracking-wider px-6 py-3 rounded-sm mt-2 w-full">
+                    Get Started
+                </button>
             </div>
         </div>
     </nav>
 
     <!-- Hero Section -->
-    <section class="hero-gradient min-h-screen flex items-center pt-16 relative overflow-hidden">
-        <div class="absolute inset-0 opacity-10">
-            <div class="absolute top-20 left-10 w-72 h-72 bg-brand-400 rounded-full blur-3xl"></div>
-            <div class="absolute bottom-20 right-10 w-96 h-96 bg-athlete-500 rounded-full blur-3xl"></div>
-            <div class="absolute top-1/2 left-1/2 w-64 h-64 bg-coach-500 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2"></div>
-        </div>
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 relative z-10">
-            <div class="text-center max-w-4xl mx-auto">
-                <div class="inline-flex items-center space-x-2 bg-white/10 backdrop-blur-sm rounded-full px-4 py-2 mb-8">
-                    <span class="w-2 h-2 bg-green-400 rounded-full pulse-ring"></span>
-                    <span class="text-white/90 text-sm font-medium">2,847 Athletes Connected This Month</span>
+    <section class="relative min-h-screen flex items-center justify-center overflow-hidden">
+        <div class="absolute inset-0 bg-cover bg-center bg-no-repeat" style="background-image: url('https://images.unsplash.com/photo-1663563624897-de8972d7ce93?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NDk1ODB8MHwxfHNlYXJjaHwxfHxhbWVyaWNhbiUyMGZvb3RiYWxsJTIwc3RhZGl1bSUyMG5pZ2h0JTIwbGlnaHRzfGVufDB8fHx8MTc3MjI5OTM2MHww&ixlib=rb-4.1.0&q=85');"></div>
+        <div class="absolute inset-0 hero-gradient"></div>
+        
+        <div class="relative z-10 max-w-5xl mx-auto px-6 md:px-12 text-center pt-20">
+            <p class="text-electric font-mono text-sm uppercase tracking-[0.3em] mb-6">The Future of Athletic Recruitment</p>
+            
+            <h1 class="font-heading text-5xl sm:text-6xl md:text-8xl font-black uppercase tracking-tighter leading-none text-white mb-6">
+                Connect. <span class="text-volt">Compete.</span> Commit.
+            </h1>
+            
+            <p class="text-lg md:text-xl text-gray-400 max-w-2xl mx-auto mb-10 font-body leading-relaxed">
+                A two-way platform bridging the gap between high school athletes and college programs. 
+                Transparency, accessibility, and strategic alignment — all in one place.
+            </p>
+            
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <button onclick="window.location.href='auth.html'" class="bg-electric hover:bg-electric/90 text-white font-bold uppercase tracking-wider px-8 py-6 rounded-sm shadow-[0_0_20px_rgba(37,99,235,0.5)] transition-all hover:scale-105 text-base">
+                    I'm an Athlete
+                    <i data-lucide="chevron-right" class="inline ml-2 w-5 h-5"></i>
+                </button>
+                <button onclick="window.location.href='auth.html'" class="border-2 border-white/20 text-white hover:border-volt hover:text-volt hover:bg-transparent font-bold uppercase tracking-wider px-8 py-6 rounded-sm transition-all text-base">
+                    I'm a Coach
+                    <i data-lucide="chevron-right" class="inline ml-2 w-5 h-5"></i>
+                </button>
+            </div>
+            
+            <div class="mt-20 grid grid-cols-3 gap-4 md:gap-8 max-w-2xl mx-auto">
+                <div class="glass-card rounded-sm p-4 md:p-6">
+                    <p class="font-heading text-2xl md:text-4xl font-bold text-white">10K+</p>
+                    <p class="text-gray-500 text-xs md:text-sm uppercase tracking-wider mt-1">Athletes</p>
                 </div>
-                <h1 class="text-5xl md:text-7xl font-bold text-white mb-6 leading-tight">
-                    Where <span class="text-brand-300">Athletes</span> & <span class="text-coach-400">Coaches</span> <br>
-                    <span class="gradient-text">Find Their Perfect Match</span>
-                </h1>
-                <p class="text-xl text-slate-300 mb-10 max-w-2xl mx-auto">
-                    The first two-way recruiting platform that brings transparency, strategic alignment, and data-driven decisions to collegiate athletics recruitment.
-                </p>
-                <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
-                    <button onclick="selectRole('athlete')" class="group bg-athlete-500 hover:bg-athlete-600 text-white px-8 py-4 rounded-xl font-semibold text-lg transition flex items-center space-x-3">
-                        <i data-lucide="user" class="w-5 h-5"></i>
-                        <span>I'm an Athlete</span>
-                        <i data-lucide="arrow-right" class="w-5 h-5 group-hover:translate-x-1 transition"></i>
-                    </button>
-                    <button onclick="selectRole('coach')" class="group bg-coach-500 hover:bg-coach-600 text-white px-8 py-4 rounded-xl font-semibold text-lg transition flex items-center space-x-3">
-                        <i data-lucide="users" class="w-5 h-5"></i>
-                        <span>I'm a Coach</span>
-                        <i data-lucide="arrow-right" class="w-5 h-5 group-hover:translate-x-1 transition"></i>
-                    </button>
+                <div class="glass-card rounded-sm p-4 md:p-6">
+                    <p class="font-heading text-2xl md:text-4xl font-bold text-white">500+</p>
+                    <p class="text-gray-500 text-xs md:text-sm uppercase tracking-wider mt-1">Programs</p>
                 </div>
-                <div class="mt-12 flex items-center justify-center space-x-8 text-slate-400">
-                    <div class="flex items-center space-x-2">
-                        <i data-lucide="shield-check" class="w-5 h-5"></i>
-                        <span class="text-sm">NCAA Compliant</span>
-                    </div>
-                    <div class="flex items-center space-x-2">
-                        <i data-lucide="lock" class="w-5 h-5"></i>
-                        <span class="text-sm">Secure & Private</span>
-                    </div>
-                    <div class="flex items-center space-x-2">
-                        <i data-lucide="zap" class="w-5 h-5"></i>
-                        <span class="text-sm">Real-time Updates</span>
-                    </div>
+                <div class="glass-card rounded-sm p-4 md:p-6">
+                    <p class="font-heading text-2xl md:text-4xl font-bold text-white">95%</p>
+                    <p class="text-gray-500 text-xs md:text-sm uppercase tracking-wider mt-1">Match Rate</p>
                 </div>
             </div>
         </div>
-        <div class="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-slate-50 to-transparent"></div>
+        
+        <div class="absolute bottom-8 left-1/2 -translate-x-1/2">
+            <div class="w-6 h-10 border-2 border-white/30 rounded-full flex justify-center">
+                <div class="w-1.5 h-1.5 bg-white rounded-full mt-2 animate-bounce"></div>
+            </div>
+        </div>
     </section>
 
-    <!-- Stats Section -->
-    <section class="py-16 bg-white">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
-                <div class="text-center">
-                    <div class="text-4xl font-bold text-brand-600 mb-2">15,000+</div>
-                    <div class="text-slate-600">Active Athletes</div>
+    <!-- Value Prop Section -->
+    <section class="py-24 md:py-32 bg-obsidian">
+        <div class="max-w-7xl mx-auto px-6 md:px-12">
+            <div class="grid md:grid-cols-2 gap-8 md:gap-12">
+                <div id="athletes" class="relative group">
+                    <div class="relative h-[400px] md:h-[500px] rounded-sm overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1763639700615-225fe7fdffff?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjY2NzF8MHwxfHNlYXJjaHwxfHxhdGhsZXRlJTIwc3ByaW50aW5nJTIwdHJhY2slMjBzdGFydHxlbnwwfHx8fDE3NzIyOTkzNTN8MA&ixlib=rb-4.1.0&q=85" alt="Athlete sprinting" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+                        <div class="absolute inset-0 bg-gradient-to-t from-obsidian via-obsidian/60 to-transparent"></div>
+                        <div class="absolute bottom-0 left-0 p-8 md:p-10">
+                            <p class="text-electric font-mono text-xs uppercase tracking-[0.2em] mb-3">For Athletes</p>
+                            <h2 class="font-heading text-4xl md:text-5xl font-black uppercase tracking-tight text-white mb-4">
+                                Get Seen.<br/><span class="text-volt">Get Signed.</span>
+                            </h2>
+                            <p class="text-gray-400 text-base leading-relaxed mb-6 max-w-sm">
+                                Showcase your talents, connect directly with coaches, and find the program that fits your athletic and academic goals.
+                            </p>
+                            <button onclick="window.location.href='auth.html'" class="bg-volt text-black hover:bg-volt/90 font-bold uppercase tracking-wider px-6 py-3 rounded-sm shadow-[0_0_15px_rgba(204,255,0,0.4)] transition-all hover:scale-105">
+                                Create Profile
+                                <i data-lucide="arrow-right" class="inline ml-2 w-4 h-4"></i>
+                            </button>
+                        </div>
+                    </div>
                 </div>
-                <div class="text-center">
-                    <div class="text-4xl font-bold text-coach-600 mb-2">1,200+</div>
-                    <div class="text-slate-600">College Programs</div>
-                </div>
-                <div class="text-center">
-                    <div class="text-4xl font-bold text-athlete-600 mb-2">8,500+</div>
-                    <div class="text-slate-600">Successful Matches</div>
-                </div>
-                <div class="text-center">
-                    <div class="text-4xl font-bold text-brand-600 mb-2">94%</div>
-                    <div class="text-slate-600">Satisfaction Rate</div>
+
+                <div id="coaches" class="relative group">
+                    <div class="relative h-[400px] md:h-[500px] rounded-sm overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1720716430227-82ce7abf761d?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NDQ2NDJ8MHwxfHNlYXJjaHwyfHxiYXNrZXRiYWxsJTIwc3RhbmRpbmclMjBhcm91bmQlMjBjb3VydHxlbnwwfHx8MTc3MjI5OTM1N3ww&ixlib=rb-4.1.0&q=85" alt="Basketball team huddle" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+                        <div class="absolute inset-0 bg-gradient-to-t from-obsidian via-obsidian/60 to-transparent"></div>
+                        <div class="absolute bottom-0 left-0 p-8 md:p-10">
+                            <p class="text-electric font-mono text-xs uppercase tracking-[0.2em] mb-3">For Coaches</p>
+                            <h2 class="font-heading text-4xl md:text-5xl font-black uppercase tracking-tight text-white mb-4">
+                                Find Talent.<br/><span class="text-volt">Build Dynasties.</span>
+                            </h2>
+                            <p class="text-gray-400 text-base leading-relaxed mb-6 max-w-sm">
+                                Discover verified athletes, communicate expectations clearly, and streamline your recruitment pipeline.
+                            </p>
+                            <button onclick="window.location.href='auth.html'" class="bg-electric text-white hover:bg-electric/90 font-bold uppercase tracking-wider px-6 py-3 rounded-sm shadow-[0_0_15px_rgba(37,99,235,0.4)] transition-all hover:scale-105">
+                                Join as Program
+                                <i data-lucide="arrow-right" class="inline ml-2 w-4 h-4"></i>
+                            </button>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Features Section -->
-    <section id="features" class="py-20 bg-slate-50">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="features" class="py-24 md:py-32 bg-surface">
+        <div class="max-w-7xl mx-auto px-6 md:px-12">
             <div class="text-center mb-16">
-                <h2 class="text-4xl font-bold text-slate-900 mb-4">Two-Way Transparency</h2>
-                <p class="text-xl text-slate-600 max-w-2xl mx-auto">Our platform ensures both athletes and coaches have complete visibility into the recruitment process.</p>
+                <p class="text-electric font-mono text-sm uppercase tracking-[0.3em] mb-4">Platform Features</p>
+                <h2 class="font-heading text-4xl md:text-6xl font-bold uppercase tracking-tight text-white">
+                    Everything You Need to <span class="text-volt">Succeed</span>
+                </h2>
             </div>
 
-            <!-- Role Tabs -->
-            <div class="flex justify-center mb-12">
-                <div class="bg-white rounded-xl p-1.5 shadow-lg inline-flex">
-                    <button onclick="switchRoleTab('athlete')" id="tab-athlete" class="tab-active px-6 py-3 rounded-lg font-medium transition flex items-center space-x-2">
-                        <i data-lucide="user" class="w-5 h-5"></i>
-                        <span>For Athletes</span>
-                    </button>
-                    <button onclick="switchRoleTab('coach')" id="tab-coach" class="px-6 py-3 rounded-lg font-medium text-slate-600 hover:text-slate-900 transition flex items-center space-x-2">
-                        <i data-lucide="users" class="w-5 h-5"></i>
-                        <span>For Coaches</span>
-                    </button>
-                </div>
-            </div>
-
-            <!-- Athlete Features -->
-            <div id="athlete-features" class="grid md:grid-cols-3 gap-8 slide-in">
-                <div class="bg-white rounded-2xl p-8 shadow-lg card-hover border border-slate-100">
-                    <div class="w-14 h-14 bg-athlete-100 rounded-xl flex items-center justify-center mb-6">
-                        <i data-lucide="search" class="w-7 h-7 text-athlete-600"></i>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="feature-card border border-white/5 p-8 rounded-sm">
+                    <div class="w-12 h-12 bg-electric/10 rounded-sm flex items-center justify-center mb-6">
+                        <i data-lucide="message-square" class="w-6 h-6 text-electric"></i>
                     </div>
-                    <h3 class="text-xl font-bold text-slate-900 mb-3">Smart Program Matching</h3>
-                    <p class="text-slate-600 leading-relaxed">AI-powered matching based on your athletic stats, academic goals, location preferences, and team culture fit.</p>
+                    <h3 class="font-heading text-xl font-bold uppercase tracking-wide text-white mb-3">Direct Messaging</h3>
+                    <p class="text-gray-400 text-base leading-relaxed">Connect directly with athletes or coaches through our secure messaging platform. No middlemen.</p>
                 </div>
-                <div class="bg-white rounded-2xl p-8 shadow-lg card-hover border border-slate-100">
-                    <div class="w-14 h-14 bg-athlete-100 rounded-xl flex items-center justify-center mb-6">
-                        <i data-lucide="file-text" class="w-7 h-7 text-athlete-600"></i>
+                <div class="feature-card border border-white/5 p-8 rounded-sm">
+                    <div class="w-12 h-12 bg-electric/10 rounded-sm flex items-center justify-center mb-6">
+                        <i data-lucide="shield-check" class="w-6 h-6 text-electric"></i>
                     </div>
-                    <h3 class="text-xl font-bold text-slate-900 mb-3">Transparent Expectations</h3>
-                    <p class="text-slate-600 leading-relaxed">Access detailed evaluation criteria, scholarship information, and program requirements before you apply.</p>
+                    <h3 class="font-heading text-xl font-bold uppercase tracking-wide text-white mb-3">Verified Stats</h3>
+                    <p class="text-gray-400 text-base leading-relaxed">All athletic statistics and achievements are verified for authenticity and accuracy.</p>
                 </div>
-                <div class="bg-white rounded-2xl p-8 shadow-lg card-hover border border-slate-100">
-                    <div class="w-14 h-14 bg-athlete-100 rounded-xl flex items-center justify-center mb-6">
-                        <i data-lucide="trending-up" class="w-7 h-7 text-athlete-600"></i>
+                <div class="feature-card border border-white/5 p-8 rounded-sm">
+                    <div class="w-12 h-12 bg-electric/10 rounded-sm flex items-center justify-center mb-6">
+                        <i data-lucide="graduation-cap" class="w-6 h-6 text-electric"></i>
                     </div>
-                    <h3 class="text-xl font-bold text-slate-900 mb-3">Progress Tracking</h3>
-                    <p class="text-slate-600 leading-relaxed">Real-time updates on your recruitment status, coach interest levels, and next steps in the process.</p>
+                    <h3 class="font-heading text-xl font-bold uppercase tracking-wide text-white mb-3">Academic Tracking</h3>
+                    <p class="text-gray-400 text-base leading-relaxed">Monitor academic eligibility and GPA requirements alongside athletic performance.</p>
                 </div>
-                <div class="bg-white rounded-2xl p-8 shadow-lg card-hover border border-slate-100">
-                    <div class="w-14 h-14 bg-athlete-100 rounded-xl flex items-center justify-center mb-6">
-                        <i data-lucide="video" class="w-7 h-7 text-athlete-600"></i>
+                <div class="feature-card border border-white/5 p-8 rounded-sm">
+                    <div class="w-12 h-12 bg-electric/10 rounded-sm flex items-center justify-center mb-6">
+                        <i data-lucide="video" class="w-6 h-6 text-electric"></i>
                     </div>
-                    <h3 class="text-xl font-bold text-slate-900 mb-3">Highlight Portfolio</h3>
-                    <p class="text-slate-600 leading-relaxed">Build a comprehensive profile with videos, stats, academic records, and coach recommendations.</p>
+                    <h3 class="font-heading text-xl font-bold uppercase tracking-wide text-white mb-3">Video Highlights</h3>
+                    <p class="text-gray-400 text-base leading-relaxed">Upload and showcase game footage, training videos, and highlight reels.</p>
                 </div>
-                <div class="bg-white rounded-2xl p-8 shadow-lg card-hover border border-slate-100">
-                    <div class="w-14 h-14 bg-athlete-100 rounded-xl flex items-center justify-center mb-6">
-                        <i data-lucide="calendar" class="w-7 h-7 text-athlete-600"></i>
+                <div class="feature-card border border-white/5 p-8 rounded-sm">
+                    <div class="w-12 h-12 bg-electric/10 rounded-sm flex items-center justify-center mb-6">
+                        <i data-lucide="trending-up" class="w-6 h-6 text-electric"></i>
                     </div>
-                    <h3 class="text-xl font-bold text-slate-900 mb-3">Recruitment Timeline</h3>
-                    <p class="text-slate-600 leading-relaxed">Know exactly when coaches can contact you, visit deadlines, and signing period dates.</p>
+                    <h3 class="font-heading text-xl font-bold uppercase tracking-wide text-white mb-3">Performance Analytics</h3>
+                    <p class="text-gray-400 text-base leading-relaxed">Track progress over time with detailed analytics and performance metrics.</p>
                 </div>
-                <div class="bg-white rounded-2xl p-8 shadow-lg card-hover border border-slate-100">
-                    <div class="w-14 h-14 bg-athlete-100 rounded-xl flex items-center justify-center mb-6">
-                        <i data-lucide="message-circle" class="w-7 h-7 text-athlete-600"></i>
+                <div class="feature-card border border-white/5 p-8 rounded-sm">
+                    <div class="w-12 h-12 bg-electric/10 rounded-sm flex items-center justify-center mb-6">
+                        <i data-lucide="users" class="w-6 h-6 text-electric"></i>
                     </div>
-                    <h3 class="text-xl font-bold text-slate-900 mb-3">Direct Communication</h3>
-                    <p class="text-slate-600 leading-relaxed">Secure messaging system with read receipts and NCAA-compliant communication tools.</p>
-                </div>
-            </div>
-
-            <!-- Coach Features -->
-            <div id="coach-features" class="grid md:grid-cols-3 gap-8 hidden slide-in">
-                <div class="bg-white rounded-2xl p-8 shadow-lg card-hover border border-slate-100">
-                    <div class="w-14 h-14 bg-coach-100 rounded-xl flex items-center justify-center mb-6">
-                        <i data-lucide="filter" class="w-7 h-7 text-coach-600"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-slate-900 mb-3">Advanced Filtering</h3>
-                    <p class="text-slate-600 leading-relaxed">Find athletes by position, stats, academics, location, and 50+ other criteria with precision search.</p>
-                </div>
-                <div class="bg-white rounded-2xl p-8 shadow-lg card-hover border border-slate-100">
-                    <div class="w-14 h-14 bg-coach-100 rounded-xl flex items-center justify-center mb-6">
-                        <i data-lucide="bar-chart-3" class="w-7 h-7 text-coach-600"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-slate-900 mb-3">Analytics Dashboard</h3>
-                    <p class="text-slate-600 leading-relaxed">Track pipeline health, conversion rates, and recruitment ROI with detailed insights.</p>
-                </div>
-                <div class="bg-white rounded-2xl p-8 shadow-lg card-hover border border-slate-100">
-                    <div class="w-14 h-14 bg-coach-100 rounded-xl flex items-center justify-center mb-6">
-                        <i data-lucide="clipboard-list" class="w-7 h-7 text-coach-600"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-slate-900 mb-3">Evaluation Workflows</h3>
-                    <p class="text-slate-600 leading-relaxed">Standardized evaluation forms, shared notes, and collaborative decision-making tools.</p>
-                </div>
-                <div class="bg-white rounded-2xl p-8 shadow-lg card-hover border border-slate-100">
-                    <div class="w-14 h-14 bg-coach-100 rounded-xl flex items-center justify-center mb-6">
-                        <i data-lucide="megaphone" class="w-7 h-7 text-coach-600"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-slate-900 mb-3">Program Showcase</h3>
-                    <p class="text-slate-600 leading-relaxed">Highlight your facilities, culture, academic support, and success stories to attract top talent.</p>
-                </div>
-                <div class="bg-white rounded-2xl p-8 shadow-lg card-hover border border-slate-100">
-                    <div class="w-14 h-14 bg-coach-100 rounded-xl flex items-center justify-center mb-6">
-                        <i data-lucide="users" class="w-7 h-7 text-coach-600"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-slate-900 mb-3">Team Collaboration</h3>
-                    <p class="text-slate-600 leading-relaxed">Coordinate with assistant coaches, recruiting coordinators, and admissions seamlessly.</p>
-                </div>
-                <div class="bg-white rounded-2xl p-8 shadow-lg card-hover border border-slate-100">
-                    <div class="w-14 h-14 bg-coach-100 rounded-xl flex items-center justify-center mb-6">
-                        <i data-lucide="bell" class="w-7 h-7 text-coach-600"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-slate-900 mb-3">Smart Alerts</h3>
-                    <p class="text-slate-600 leading-relaxed">Get notified when target athletes update profiles, achieve milestones, or express interest.</p>
+                    <h3 class="font-heading text-xl font-bold uppercase tracking-wide text-white mb-3">Program Matching</h3>
+                    <p class="text-gray-400 text-base leading-relaxed">AI-powered matching to connect athletes with programs that fit their goals.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- How It Works -->
-    <section id="how-it-works" class="py-20 bg-white">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16">
-                <h2 class="text-4xl font-bold text-slate-900 mb-4">How Target Recruiter Works</h2>
-                <p class="text-xl text-slate-600">A streamlined process designed for transparency and success</p>
+    <!-- How It Works Section -->
+    <section id="how-it-works" class="py-24 md:py-32 bg-obsidian">
+        <div class="max-w-5xl mx-auto px-6 md:px-12">
+            <div class="text-center mb-20">
+                <p class="text-electric font-mono text-sm uppercase tracking-[0.3em] mb-4">The Process</p>
+                <h2 class="font-heading text-4xl md:text-6xl font-bold uppercase tracking-tight text-white">
+                    How It <span class="text-volt">Works</span>
+                </h2>
             </div>
 
             <div class="relative">
-                <div class="hidden md:block absolute top-1/2 left-0 right-0 h-1 bg-gradient-to-r from-athlete-500 via-brand-500 to-coach-500 -translate-y-1/2"></div>
-                
-                <div class="grid md:grid-cols-4 gap-8">
-                    <div class="relative text-center">
-                        <div class="w-16 h-16 bg-athlete-500 rounded-full flex items-center justify-center mx-auto mb-6 relative z-10 shadow-lg">
-                            <span class="text-2xl font-bold text-white">1</span>
+                <div class="hidden md:block absolute left-[39px] top-0 bottom-0 w-px bg-gradient-to-b from-electric via-electric/50 to-transparent"></div>
+                <div class="space-y-12">
+                    <div class="flex gap-8 items-start">
+                        <div class="relative z-10 w-20 h-20 bg-surface border border-electric/30 rounded-sm flex items-center justify-center shrink-0">
+                            <span class="font-heading text-2xl font-bold text-electric">01</span>
                         </div>
-                        <h3 class="text-lg font-bold text-slate-900 mb-2">Create Profile</h3>
-                        <p class="text-slate-600 text-sm">Athletes build comprehensive profiles. Coaches set program requirements and evaluation criteria.</p>
-                    </div>
-                    <div class="relative text-center">
-                        <div class="w-16 h-16 bg-brand-500 rounded-full flex items-center justify-center mx-auto mb-6 relative z-10 shadow-lg">
-                            <span class="text-2xl font-bold text-white">2</span>
-                        </div>
-                        <h3 class="text-lg font-bold text-slate-900 mb-2">Smart Matching</h3>
-                        <p class="text-slate-600 text-sm">Our algorithm identifies optimal matches based on athletic, academic, and cultural fit.</p>
-                    </div>
-                    <div class="relative text-center">
-                        <div class="w-16 h-16 bg-brand-500 rounded-full flex items-center justify-center mx-auto mb-6 relative z-10 shadow-lg">
-                            <span class="text-2xl font-bold text-white">3</span>
-                        </div>
-                        <h3 class="text-lg font-bold text-slate-900 mb-2">Mutual Interest</h3>
-                        <p class="text-slate-600 text-sm">Both parties express interest, unlocking full profiles and enabling direct communication.</p>
-                    </div>
-                    <div class="relative text-center">
-                        <div class="w-16 h-16 bg-coach-500 rounded-full flex items-center justify-center mx-auto mb-6 relative z-10 shadow-lg">
-                            <span class="text-2xl font-bold text-white">4</span>
-                        </div>
-                        <h3 class="text-lg font-bold text-slate-900 mb-2">Connect & Commit</h3>
-                        <p class="text-slate-600 text-sm">Schedule visits, extend offers, and finalize commitments with full transparency.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Dashboard Preview -->
-    <section class="py-20 bg-slate-900">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-12">
-                <h2 class="text-4xl font-bold text-white mb-4">Powerful Dashboards</h2>
-                <p class="text-xl text-slate-400">Everything you need to manage your recruitment journey</p>
-            </div>
-            
-            <div class="bg-slate-800 rounded-2xl p-4 shadow-2xl">
-                <div class="bg-slate-900 rounded-xl overflow-hidden">
-                    <div class="flex items-center space-x-2 px-4 py-3 bg-slate-800 border-b border-slate-700">
-                        <div class="w-3 h-3 rounded-full bg-red-500"></div>
-                        <div class="w-3 h-3 rounded-full bg-yellow-500"></div>
-                        <div class="w-3 h-3 rounded-full bg-green-500"></div>
-                        <div class="ml-4 text-slate-400 text-sm">targetrecruiter.com/dashboard</div>
-                    </div>
-                    <div class="p-6">
-                        <div class="grid md:grid-cols-4 gap-6 mb-6">
-                            <div class="bg-slate-800 rounded-lg p-4">
-                                <div class="text-slate-400 text-sm mb-1">Profile Views</div>
-                                <div class="text-2xl font-bold text-white">1,247</div>
-                                <div class="text-green-400 text-sm flex items-center mt-1">
-                                    <i data-lucide="trending-up" class="w-4 h-4 mr-1"></i>
-                                    +23% this week
-                                </div>
-                            </div>
-                            <div class="bg-slate-800 rounded-lg p-4">
-                                <div class="text-slate-400 text-sm mb-1">Active Conversations</div>
-                                <div class="text-2xl font-bold text-white">18</div>
-                                <div class="text-green-400 text-sm flex items-center mt-1">
-                                    <i data-lucide="message-circle" class="w-4 h-4 mr-1"></i>
-                                    5 new today
-                                </div>
-                            </div>
-                            <div class="bg-slate-800 rounded-lg p-4">
-                                <div class="text-slate-400 text-sm mb-1">Match Score</div>
-                                <div class="text-2xl font-bold text-white">87%</div>
-                                <div class="text-brand-400 text-sm flex items-center mt-1">
-                                    <i data-lucide="star" class="w-4 h-4 mr-1"></i>
-                                    Top 10% in region
-                                </div>
-                            </div>
-                            <div class="bg-slate-800 rounded-lg p-4">
-                                <div class="text-slate-400 text-sm mb-1">Next Action</div>
-                                <div class="text-lg font-bold text-white">Camp Invite</div>
-                                <div class="text-slate-400 text-sm mt-1">Due in 3 days</div>
-                            </div>
-                        </div>
-                        <div class="grid md:grid-cols-3 gap-6">
-                            <div class="md:col-span-2 bg-slate-800 rounded-lg p-4">
-                                <div class="flex justify-between items-center mb-4">
-                                    <h4 class="text-white font-semibold">Recruitment Pipeline</h4>
-                                    <button class="text-brand-400 text-sm hover:text-brand-300">View All</button>
-                                </div>
-                                <div class="space-y-3">
-                                    <div class="flex items-center space-x-3 p-3 bg-slate-700/50 rounded-lg">
-                                        <div class="w-10 h-10 bg-athlete-500 rounded-full flex items-center justify-center text-white font-bold">SU</div>
-                                        <div class="flex-1">
-                                            <div class="text-white font-medium">State University</div>
-                                            <div class="text-slate-400 text-sm">Interest Level: High • Last active: 2h ago</div>
-                                        </div>
-                                        <span class="px-3 py-1 bg-green-500/20 text-green-400 rounded-full text-sm">Offer Extended</span>
-                                    </div>
-                                    <div class="flex items-center space-x-3 p-3 bg-slate-700/50 rounded-lg">
-                                        <div class="w-10 h-10 bg-coach-500 rounded-full flex items-center justify-center text-white font-bold">TC</div>
-                                        <div class="flex-1">
-                                            <div class="text-white font-medium">Tech College</div>
-                                            <div class="text-slate-400 text-sm">Interest Level: Medium • Last active: 1d ago</div>
-                                        </div>
-                                        <span class="px-3 py-1 bg-yellow-500/20 text-yellow-400 rounded-full text-sm">Camp Invite</span>
-                                    </div>
-                                    <div class="flex items-center space-x-3 p-3 bg-slate-700/50 rounded-lg">
-                                        <div class="w-10 h-10 bg-brand-500 rounded-full flex items-center justify-center text-white font-bold">MU</div>
-                                        <div class="flex-1">
-                                            <div class="text-white font-medium">Midwest University</div>
-                                            <div class="text-slate-400 text-sm">Interest Level: High • Last active: 5h ago</div>
-                                        </div>
-                                        <span class="px-3 py-1 bg-blue-500/20 text-blue-400 rounded-full text-sm">Official Visit</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="bg-slate-800 rounded-lg p-4">
-                                <h4 class="text-white font-semibold mb-4">Upcoming Events</h4>
-                                <div class="space-y-4">
-                                    <div class="flex items-start space-x-3">
-                                        <div class="w-12 h-12 bg-brand-500/20 rounded-lg flex flex-col items-center justify-center">
-                                            <span class="text-brand-400 text-xs font-bold">MAR</span>
-                                            <span class="text-white font-bold">15</span>
-                                        </div>
-                                        <div>
-                                            <div class="text-white font-medium">Elite Camp</div>
-                                            <div class="text-slate-400 text-sm">State University</div>
-                                        </div>
-                                    </div>
-                                    <div class="flex items-start space-x-3">
-                                        <div class="w-12 h-12 bg-coach-500/20 rounded-lg flex flex-col items-center justify-center">
-                                            <span class="text-coach-400 text-xs font-bold">MAR</span>
-                                            <span class="text-white font-bold">22</span>
-                                        </div>
-                                        <div>
-                                            <div class="text-white font-medium">Official Visit</div>
-                                            <div class="text-slate-400 text-sm">Tech College</div>
-                                        </div>
-                                    </div>
-                                    <div class="flex items-start space-x-3">
-                                        <div class="w-12 h-12 bg-athlete-500/20 rounded-lg flex flex-col items-center justify-center">
-                                            <span class="text-athlete-400 text-xs font-bold">APR</span>
-                                            <span class="text-white font-bold">05</span>
-                                        </div>
-                                        <div>
-                                            <div class="text-white font-medium">Signing Day</div>
-                                            <div class="text-slate-400 text-sm">National Letter of Intent</div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                        <div class="pt-2">
+                            <h3 class="font-heading text-2xl md:text-3xl font-bold uppercase tracking-wide text-white mb-3">Create Your Profile</h3>
+                            <p class="text-gray-400 text-base md:text-lg leading-relaxed max-w-lg">Sign up and build a comprehensive profile showcasing your athletic achievements, stats, and goals.</p>
                         </div>
                     </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Success Stories -->
-    <section id="success-stories" class="py-20 bg-slate-50">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16">
-                <h2 class="text-4xl font-bold text-slate-900 mb-4">Success Stories</h2>
-                <p class="text-xl text-slate-600">Real athletes and coaches who found their perfect match</p>
-            </div>
-
-            <div class="grid md:grid-cols-2 gap-8">
-                <div class="bg-white rounded-2xl p-8 shadow-lg border border-slate-100">
-                    <div class="flex items-start space-x-4 mb-6">
-                        <img src="https://static.photos/people/200x200/42" alt="Athlete" class="w-16 h-16 rounded-full object-cover">
-                        <div>
-                            <div class="flex items-center space-x-2">
-                                <h4 class="text-lg font-bold text-slate-900">Maya Johnson</h4>
-                                <span class="px-2 py-0.5 bg-athlete-100 text-athlete-600 rounded-full text-xs font-medium">Athlete</span>
-                            </div>
-                            <p class="text-slate-600">Soccer • Class of 2024</p>
-                            <div class="flex items-center space-x-1 mt-1">
-                                <i data-lucide="star" class="w-4 h-4 text-yellow-400 fill-yellow-400"></i>
-                                <i data-lucide="star" class="w-4 h-4 text-yellow-400 fill-yellow-400"></i>
-                                <i data-lucide="star" class="w-4 h-4 text-yellow-400 fill-yellow-400"></i>
-                                <i data-lucide="star" class="w-4 h-4 text-yellow-400 fill-yellow-400"></i>
-                                <i data-lucide="star" class="w-4 h-4 text-yellow-400 fill-yellow-400"></i>
-                            </div>
+                    <div class="flex gap-8 items-start">
+                        <div class="relative z-10 w-20 h-20 bg-surface border border-electric/30 rounded-sm flex items-center justify-center shrink-0">
+                            <span class="font-heading text-2xl font-bold text-electric">02</span>
+                        </div>
+                        <div class="pt-2">
+                            <h3 class="font-heading text-2xl md:text-3xl font-bold uppercase tracking-wide text-white mb-3">Upload Highlights</h3>
+                            <p class="text-gray-400 text-base md:text-lg leading-relaxed max-w-lg">Add video highlights, game footage, and training clips to demonstrate your abilities.</p>
                         </div>
                     </div>
-                    <p class="text-slate-700 leading-relaxed mb-4">"Target Recruiter changed everything for me. I could see exactly what coaches were looking for and track my progress with each program. The transparency helped me focus on schools that were truly interested, and I committed to my dream school with confidence."</p>
-                    <div class="flex items-center space-x-2 text-slate-500 text-sm">
-                        <i data-lucide="check-circle" class="w-4 h-4 text-athlete-500"></i>
-                        <span>Committed to Stanford University</span>
-                    </div>
-                </div>
-
-                <div class="bg-white rounded-2xl p-8 shadow-lg border border-slate-100">
-                    <div class="flex items-start space-x-4 mb-6">
-                        <img src="https://static.photos/people/200x200/88" alt="Coach" class="w-16 h-16 rounded-full object-cover">
-                        <div>
-                            <div class="flex items-center space-x-2">
-                                <h4 class="text-lg font-bold text-slate-900">Coach David Martinez</h4>
-                                <span class="px-2 py-0.5 bg-coach-100 text-coach-600 rounded-full text-xs font-medium">Coach</span>
-                            </div>
-                            <p class="text-slate-600">Head Coach, Basketball</p>
-                            <div class="flex items-center space-x-1 mt-1">
-                                <i data-lucide="star" class="w-4 h-4 text-yellow-400 fill-yellow-400"></i>
-                                <i data-lucide="star" class="w-4 h-4 text-yellow-400 fill-yellow-400"></i>
-                                <i data-lucide="star" class="w-4 h-4 text-yellow-400 fill-yellow-400"></i>
-                                <i data-lucide="star" class="w-4 h-4 text-yellow-400 fill-yellow-400"></i>
-                                <i data-lucide="star" class="w-4 h-4 text-yellow-400 fill-yellow-400"></i>
-                            </div>
+                    <div class="flex gap-8 items-start">
+                        <div class="relative z-10 w-20 h-20 bg-surface border border-electric/30 rounded-sm flex items-center justify-center shrink-0">
+                            <span class="font-heading text-2xl font-bold text-electric">03</span>
+                        </div>
+                        <div class="pt-2">
+                            <h3 class="font-heading text-2xl md:text-3xl font-bold uppercase tracking-wide text-white mb-3">Connect with Programs</h3>
+                            <p class="text-gray-400 text-base md:text-lg leading-relaxed max-w-lg">Browse programs, receive interest from coaches, and start meaningful conversations.</p>
                         </div>
                     </div>
-                    <p class="text-slate-700 leading-relaxed mb-4">"We've reduced our recruiting timeline by 40% using Target Recruiter. The ability to set clear expectations and filter for athletes who meet our academic and athletic standards has been game-changing. Our last three commits all came through the platform."</p>
-                    <div class="flex items-center space-x-2 text-slate-500 text-sm">
-                        <i data-lucide="check-circle" class="w-4 h-4 text-coach-500"></i>
-                        <span>University of Texas</span>
+                    <div class="flex gap-8 items-start">
+                        <div class="relative z-10 w-20 h-20 bg-surface border border-electric/30 rounded-sm flex items-center justify-center shrink-0">
+                            <span class="font-heading text-2xl font-bold text-electric">04</span>
+                        </div>
+                        <div class="pt-2">
+                            <h3 class="font-heading text-2xl md:text-3xl font-bold uppercase tracking-wide text-white mb-3">Commit & Succeed</h3>
+                            <p class="text-gray-400 text-base md:text-lg leading-relaxed max-w-lg">Make an informed decision and take the next step in your athletic career.</p>
+                        </div>
                     </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Pricing -->
-    <section id="pricing" class="py-20 bg-white">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16">
-                <h2 class="text-4xl font-bold text-slate-900 mb-4">Simple, Transparent Pricing</h2>
-                <p class="text-xl text-slate-600">Choose the plan that fits your recruitment goals</p>
-            </div>
-
-            <div class="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
-                <div class="bg-slate-50 rounded-2xl p-8 border border-slate-200">
-                    <h3 class="text-xl font-bold text-slate-900 mb-2">Starter</h3>
-                    <p class="text-slate-600 mb-6">For athletes beginning their journey</p>
-                    <div class="text-4xl font-bold text-slate-900 mb-6">Free</div>
-                    <ul class="space-y-4 mb-8">
-                        <li class="flex items-center space-x-3 text-slate-700">
-                            <i data-lucide="check" class="w-5 h-5 text-athlete-500"></i>
-                            <span>Basic profile creation</span>
-                        </li>
-                        <li class="flex items-center space-x-3 text-slate-700">
-                            <i data-lucide="check" class="w-5 h-5 text-athlete-500"></i>
-                            <span>5 program matches/month</span>
-                        </li>
-                        <li class="flex items-center space-x-3 text-slate-700">
-                            <i data-lucide="check" class="w-5 h-5 text-athlete-500"></i>
-                            <span>Profile analytics</span>
-                        </li>
-                        <li class="flex items-center space-x-3 text-slate-400">
-                            <i data-lucide="x" class="w-5 h-5"></i>
-                            <span>Direct messaging</span>
-                        </li>
-                    </ul>
-                    <button onclick="showModal('signup')" class="w-full py-3 border-2 border-slate-300 text-slate-700 rounded-xl font-medium hover:border-slate-400 transition">Get Started</button>
-                </div>
-
-                <div class="bg-brand-600 rounded-2xl p-8 text-white relative transform scale-105 shadow-2xl">
-                    <div class="absolute -top-4 left-1/2 -translate-x-1/2 bg-athlete-500 text-white px-4 py-1 rounded-full text-sm font-medium">Most Popular</div>
-                    <h3 class="text-xl font-bold mb-2">Pro Athlete</h3>
-                    <p class="text-brand-100 mb-6">For serious recruits</p>
-                    <div class="text-4xl font-bold mb-6">$29<span class="text-lg font-normal text-brand-100">/month</span></div>
-                    <ul class="space-y-4 mb-8">
-                        <li class="flex items-center space-x-3">
-                            <i data-lucide="check" class="w-5 h-5"></i>
-                            <span>Everything in Starter</span>
-                        </li>
-                        <li class="flex items-center space-x-3">
-                            <i data-lucide="check" class="w-5 h-5"></i>
-                            <span>Unlimited matches</span>
-                        </li>
-                        <li class="flex items-center space-x-3">
-                            <i data-lucide="check" class="w-5 h-5"></i>
-                            <span>Direct messaging</span>
-                        </li>
-                        <li class="flex items-center space-x-3">
-                            <i data-lucide="check" class="w-5 h-5"></i>
-                            <span>Video hosting</span>
-                        </li>
-                        <li class="flex items-center space-x-3">
-                            <i data-lucide="check" class="w-5 h-5"></i>
-                            <span>Priority support</span>
-                        </li>
-                    </ul>
-                    <button onclick="showModal('signup')" class="w-full py-3 bg-white text-brand-600 rounded-xl font-medium hover:bg-brand-50 transition">Start Pro Trial</button>
-                </div>
-
-                <div class="bg-slate-50 rounded-2xl p-8 border border-slate-200">
-                    <h3 class="text-xl font-bold text-slate-900 mb-2">Coach/Program</h3>
-                    <p class="text-slate-600 mb-6">For college programs</p>
-                    <div class="text-4xl font-bold text-slate-900 mb-6">Custom</div>
-                    <ul class="space-y-4 mb-8">
-                        <li class="flex items-center space-x-3 text-slate-700">
-                            <i data-lucide="check" class="w-5 h-5 text-coach-500"></i>
-                            <span>Full program dashboard</span>
-                        </li>
-                        <li class="flex items-center space-x-3 text-slate-700">
-                            <i data-lucide="check" class="w-5 h-5 text-coach-500"></i>
-                            <span>Advanced analytics</span>
-                        </li>
-                        <li class="flex items-center space-x-3 text-slate-700">
-                            <i data-lucide="check" class="w-5 h-5 text-coach-500"></i>
-                            <span>Team collaboration</span>
-                        </li>
-                        <li class="flex items-center space-x-3 text-slate-700">
-                            <i data-lucide="check" class="w-5 h-5 text-coach-500"></i>
-                            <span>API access</span>
-                        </li>
-                    </ul>
-                    <button onclick="showModal('contact')" class="w-full py-3 border-2 border-slate-300 text-slate-700 rounded-xl font-medium hover:border-slate-400 transition">Contact Sales</button>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- CTA Section -->
-    <section class="py-20 bg-gradient-to-br from-brand-600 to-brand-800">
-        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <h2 class="text-4xl font-bold text-white mb-6">Ready to Find Your Perfect Match?</h2>
-            <p class="text-xl text-brand-100 mb-10">Join thousands of athletes and coaches who are transforming the recruitment process with transparency and data-driven decisions.</p>
-            <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
-                <button onclick="showModal('signup')" class="bg-white text-brand-600 px-8 py-4 rounded-xl font-semibold text-lg hover:bg-brand-50 transition flex items-center space-x-2">
-                    <span>Create Free Account</span>
-                    <i data-lucide="arrow-right" class="w-5 h-5"></i>
+    <section class="py-24 md:py-32 relative overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-br from-electric/20 via-obsidian to-obsidian"></div>
+        <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(37,99,235,0.15)_0%,transparent_70%)]"></div>
+        
+        <div class="relative z-10 max-w-4xl mx-auto px-6 md:px-12 text-center">
+            <i data-lucide="trophy" class="w-16 h-16 text-volt mx-auto mb-8"></i>
+            <h2 class="font-heading text-4xl md:text-6xl font-black uppercase tracking-tighter text-white mb-6">
+                Ready to Start Your <span class="text-volt">Journey?</span>
+            </h2>
+            <p class="text-gray-400 text-lg md:text-xl max-w-2xl mx-auto mb-10 leading-relaxed">
+                Join thousands of athletes and programs already using Target Recruit to transform the recruitment experience.
+            </p>
+
+            <form id="newsletter-form" class="flex flex-col sm:flex-row gap-4 justify-center max-w-md mx-auto mb-6">
+                <input type="email" id="newsletter-email" placeholder="Enter your email" required class="bg-surface-highlight border border-white/10 text-white placeholder:text-gray-500 focus:border-electric focus:ring-1 focus:ring-electric rounded-sm h-14 px-5 text-base flex-1">
+                <button type="submit" class="bg-volt text-black hover:bg-volt/90 font-bold uppercase tracking-wider px-8 h-14 rounded-sm shadow-[0_0_20px_rgba(204,255,0,0.4)] transition-all hover:scale-105 whitespace-nowrap">
+                    Get Early Access
                 </button>
-                <button onclick="showModal('demo')" class="bg-brand-700 text-white px-8 py-4 rounded-xl font-semibold text-lg hover:bg-brand-600 transition flex items-center space-x-2">
-                    <i data-lucide="play-circle" class="w-5 h-5"></i>
-                    <span>Watch Demo</span>
-                </button>
-            </div>
+            </form>
+
+            <p id="newsletter-message" class="text-sm mb-2"></p>
+            <p class="text-gray-500 text-sm">No spam, ever. Unsubscribe anytime.</p>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer class="bg-slate-900 text-slate-400 py-16">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <footer class="bg-obsidian border-t border-white/10 py-12 md:py-16">
+        <div class="max-w-7xl mx-auto px-6 md:px-12">
             <div class="grid md:grid-cols-4 gap-12 mb-12">
-                <div>
-                    <div class="flex items-center space-x-2 mb-4">
-                        <div class="w-10 h-10 bg-gradient-to-br from-brand-500 to-brand-700 rounded-xl flex items-center justify-center">
-                            <i data-lucide="target" class="w-6 h-6 text-white"></i>
-                        </div>
-                        <span class="text-xl font-bold text-white">Target Recruiter</span>
-                    </div>
-                    <p class="text-slate-500 mb-4">Transforming collegiate athletics recruitment through transparency and strategic alignment.</p>
-                    <div class="flex space-x-4">
-                        <a href="#" class="hover:text-white transition"><i data-lucide="twitter" class="w-5 h-5"></i></a>
-                        <a href="#" class="hover:text-white transition"><i data-lucide="instagram" class="w-5 h-5"></i></a>
-                        <a href="#" class="hover:text-white transition"><i data-lucide="linkedin" class="w-5 h-5"></i></a>
-                        <a href="#" class="hover:text-white transition"><i data-lucide="youtube" class="w-5 h-5"></i></a>
+                <div class="md:col-span-2">
+                    <a href="/" class="flex items-center gap-2 mb-4">
+                        <i data-lucide="target" class="w-8 h-8 text-electric"></i>
+                        <span class="font-heading font-bold text-xl uppercase tracking-wider text-white">
+                            Target<span class="text-volt">Recruit</span>
+                        </span>
+                    </a>
+                    <p class="text-gray-400 text-base leading-relaxed max-w-sm mb-6">
+                        Transforming collegiate athletic recruitment through transparency, accessibility, and strategic alignment.
+                    </p>
+                    <div class="flex gap-4">
+                        <a href="#" class="w-10 h-10 bg-surface rounded-sm flex items-center justify-center text-gray-400 hover:text-electric hover:bg-surface-highlight transition-all">
+                            <i data-lucide="twitter" class="w-5 h-5"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-surface rounded-sm flex items-center justify-center text-gray-400 hover:text-electric hover:bg-surface-highlight transition-all">
+                            <i data-lucide="instagram" class="w-5 h-5"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-surface rounded-sm flex items-center justify-center text-gray-400 hover:text-electric hover:bg-surface-highlight transition-all">
+                            <i data-lucide="linkedin" class="w-5 h-5"></i>
+                        </a>
                     </div>
                 </div>
                 <div>
-                    <h4 class="text-white font-semibold mb-4">For Athletes</h4>
-                    <ul class="space-y-2">
-                        <li><a href="#" class="hover:text-white transition">How It Works</a></li>
-                        <li><a href="#" class="hover:text-white transition">Success Stories</a></li>
-                        <li><a href="#" class="hover:text-white transition">Pricing</a></li>
-                        <li><a href="#" class="hover:text-white transition">Resources</a></li>
+                    <h4 class="font-heading font-bold text-sm uppercase tracking-wider text-white mb-6">Platform</h4>
+                    <ul class="space-y-3">
+                        <li><a href="#athletes" class="text-gray-400 hover:text-white transition-colors text-sm">For Athletes</a></li>
+                        <li><a href="#coaches" class="text-gray-400 hover:text-white transition-colors text-sm">For Coaches</a></li>
+                        <li><a href="#features" class="text-gray-400 hover:text-white transition-colors text-sm">Features</a></li>
+                        <li><a href="#how-it-works" class="text-gray-400 hover:text-white transition-colors text-sm">How It Works</a></li>
                     </ul>
                 </div>
                 <div>
-                    <h4 class="text-white font-semibold mb-4">For Coaches</h4>
-                    <ul class="space-y-2">
-                        <li><a href="#" class="hover:text-white transition">Program Features</a></li>
-                        <li><a href="#" class="hover:text-white transition">Analytics</a></li>
-                        <li><a href="#" class="hover:text-white transition">Enterprise</a></li>
-                        <li><a href="#" class="hover:text-white transition">Demo</a></li>
-                    </ul>
-                </div>
-                <div>
-                    <h4 class="text-white font-semibold mb-4">Company</h4>
-                    <ul class="space-y-2">
-                        <li><a href="#" class="hover:text-white transition">About Us</a></li>
-                        <li><a href="#" class="hover:text-white transition">Careers</a></li>
-                        <li><a href="#" class="hover:text-white transition">Press</a></li>
-                        <li><a href="#" class="hover:text-white transition">Contact</a></li>
+                    <h4 class="font-heading font-bold text-sm uppercase tracking-wider text-white mb-6">Legal</h4>
+                    <ul class="space-y-3">
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors text-sm">Privacy Policy</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors text-sm">Terms of Service</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors text-sm">Cookie Policy</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors text-sm">Contact Us</a></li>
                     </ul>
                 </div>
             </div>
-            <div class="border-t border-slate-800 pt-8 flex flex-col md:flex-row justify-between items-center">
-                <p class="text-sm">&copy; 2024 Target Recruiter. All rights reserved.</p>
-                <div class="flex space-x-6 mt-4 md:mt-0 text-sm">
-                    <a href="#" class="hover:text-white transition">Privacy Policy</a>
-                    <a href="#" class="hover:text-white transition">Terms of Service</a>
-                    <a href="#" class="hover:text-white transition">NCAA Compliance</a>
-                </div>
+            <div class="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+                <p class="text-gray-500 text-sm">© 2024 Target Recruit. All rights reserved.</p>
+                <p class="text-gray-500 text-sm flex items-center gap-2">
+                    <i data-lucide="mail" class="w-4 h-4"></i>
+                    contact@targetrecruit.com
+                </p>
             </div>
         </div>
     </footer>
 
-    <!-- Modals -->
-    <div id="modal-overlay" class="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 hidden items-center justify-center p-4">
-        <!-- Role Selection Modal -->
-        <div id="role-select-modal" class="bg-white rounded-2xl max-w-md w-full p-8 hidden">
-            <div class="flex justify-between items-center mb-6">
-                <h3 class="text-2xl font-bold text-slate-900">I am a...</h3>
-                <button onclick="closeModal()" class="text-slate-400 hover:text-slate-600"><i data-lucide="x" class="w-6 h-6"></i></button>
-            </div>
-            <div class="space-y-4">
-                <button onclick="proceedToSignup('athlete')" class="w-full p-6 border-2 border-athlete-500 rounded-xl text-athlete-600 font-medium hover:bg-athlete-50 transition flex items-center space-x-4 group">
-                    <div class="w-14 h-14 bg-athlete-100 rounded-full flex items-center justify-center group-hover:bg-athlete-200 transition">
-                        <i data-lucide="user" class="w-7 h-7"></i>
-                    </div>
-                    <div class="text-left">
-                        <div class="text-lg font-semibold">Student-Athlete</div>
-                        <div class="text-sm text-athlete-500/80">Looking to get recruited by college programs</div>
-                    </div>
-                    <i data-lucide="chevron-right" class="w-5 h-5 ml-auto group-hover:translate-x-1 transition"></i>
-                </button>
-                <button onclick="proceedToSignup('coach')" class="w-full p-6 border-2 border-coach-500 rounded-xl text-coach-600 font-medium hover:bg-coach-50 transition flex items-center space-x-4 group">
-                    <div class="w-14 h-14 bg-coach-100 rounded-full flex items-center justify-center group-hover:bg-coach-200 transition">
-                        <i data-lucide="users" class="w-7 h-7"></i>
-                    </div>
-                    <div class="text-left">
-                        <div class="text-lg font-semibold">College Coach</div>
-                        <div class="text-sm text-coach-500/80">Recruiting for a college athletic program</div>
-                    </div>
-                    <i data-lucide="chevron-right" class="w-5 h-5 ml-auto group-hover:translate-x-1 transition"></i>
-                </button>
-            </div>
-            <p class="text-center text-slate-500 text-sm mt-6">Already have an account? <button onclick="showModal('login')" class="text-brand-600 font-medium hover:text-brand-700">Log in</button></p>
-        </div>
-
-        <!-- Sign Up Modal -->
-        <div id="signup-modal" class="bg-white rounded-2xl max-w-md w-full p-8 hidden">
-            <div class="flex justify-between items-center mb-6">
-                <button onclick="backToRoleSelect()" class="text-slate-400 hover:text-slate-600 -ml-2 p-2"><i data-lucide="arrow-left" class="w-5 h-5"></i></button>
-                <h3 class="text-2xl font-bold text-slate-900">Create Your Account</h3>
-                <button onclick="closeModal()" class="text-slate-400 hover:text-slate-600"><i data-lucide="x" class="w-6 h-6"></i></button>
-            </div>
-            <div class="text-center mb-6">
-                <span id="selected-role-badge" class="inline-flex items-center space-x-2 px-4 py-2 rounded-full text-sm font-medium">
-                </span>
-            </div>
-            <form id="signup-form" class="space-y-4">
-                <div>
-                    <label class="block text-sm font-medium text-slate-700 mb-1">Full Name</label>
-                    <input type="text" id="signup-name" required class="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-brand-500 focus:border-brand-500 outline-none" placeholder="John Doe">
-                </div>
-                <div>
-                    <label class="block text-sm font-medium text-slate-700 mb-1">Email</label>
-                    <input type="email" id="signup-email" required class="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-brand-500 focus:border-brand-500 outline-none" placeholder="you@example.com">
-                </div>
-                <div id="athlete-extra-fields" class="hidden space-y-4">
-                    <div>
-                        <label class="block text-sm font-medium text-slate-700 mb-1">Sport</label>
-                        <select class="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-brand-500 focus:border-brand-500 outline-none">
-                            <option value="">Select your sport</option>
-                            <option value="football">Football</option>
-                            <option value="basketball">Basketball</option>
-                            <option value="soccer">Soccer</option>
-                            <option value="volleyball">Volleyball</option>
-                            <option value="baseball">Baseball</option>
-                            <option value="softball">Softball</option>
-                            <option value="swimming">Swimming</option>
-                            <option value="track">Track & Field</option>
-                            <option value="tennis">Tennis</option>
-                            <option value="other">Other</option>
-                        </select>
-                    </div>
-                    <div>
-                        <label class="block text-sm font-medium text-slate-700 mb-1">Graduation Year</label>
-                        <select class="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-brand-500 focus:border-brand-500 outline-none">
-                            <option value="">Select year</option>
-                            <option value="2025">2025</option>
-                            <option value="2026">2026</option>
-                            <option value="2027">2027</option>
-                            <option value="2028">2028</option>
-                        </select>
-                    </div>
-                </div>
-                <div id="coach-extra-fields" class="hidden space-y-4">
-                    <div>
-                        <label class="block text-sm font-medium text-slate-700 mb-1">Institution</label>
-                        <input type="text" class="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-brand-500 focus:border-brand-500 outline-none" placeholder="University name">
-                    </div>
-                    <div>
-                        <label class="block text-sm font-medium text-slate-700 mb-1">Sport You Coach</label>
-                        <select class="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-brand-500 focus:border-brand-500 outline-none">
-                            <option value="">Select sport</option>
-                            <option value="football">Football</option>
-                            <option value="basketball">Basketball</option>
-                            <option value="soccer">Soccer</option>
-                            <option value="volleyball">Volleyball</option>
-                            <option value="baseball">Baseball</option>
-                            <option value="softball">Softball</option>
-                            <option value="swimming">Swimming</option>
-                            <option value="track">Track & Field</option>
-                            <option value="tennis">Tennis</option>
-                            <option value="other">Other</option>
-                        </select>
-                    </div>
-                    <div>
-                        <label class="block text-sm font-medium text-slate-700 mb-1">Title/Position</label>
-                        <input type="text" class="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-brand-500 focus:border-brand-500 outline-none" placeholder="Head Coach, Assistant Coach, etc.">
-                    </div>
-                </div>
-                <div>
-                    <label class="block text-sm font-medium text-slate-700 mb-1">Password</label>
-                    <input type="password" id="signup-password" required minlength="8" class="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-brand-500 focus:border-brand-500 outline-none" placeholder="At least 8 characters">
-                </div>
-                <div>
-                    <label class="block text-sm font-medium text-slate-700 mb-1">Confirm Password</label>
-                    <input type="password" id="signup-confirm" required class="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-brand-500 focus:border-brand-500 outline-none" placeholder="Confirm your password">
-                </div>
-                <label class="flex items-start space-x-3">
-                    <input type="checkbox" required class="mt-1 rounded border-slate-300 text-brand-600 focus:ring-brand-500">
-                    <span class="text-sm text-slate-600">I agree to the <a href="#" class="text-brand-600 hover:underline">Terms of Service</a> and <a href="#" class="text-brand-600 hover:underline">Privacy Policy</a>. I also confirm that I am at least 13 years old.</span>
-                </label>
-                <button type="submit" class="w-full bg-brand-600 text-white py-3 rounded-lg font-medium hover:bg-brand-700 transition flex items-center justify-center space-x-2">
-                    <span>Create Account</span>
-                    <i data-lucide="arrow-right" class="w-5 h-5"></i>
-                </button>
-            </form>
-            <p class="text-center text-slate-600 text-sm mt-4">Already have an account? <button onclick="showModal('login')" class="text-brand-600 font-medium">Log in</button></p>
-        </div>
-
-        <!-- Login Modal -->
-        <div id="login-modal" class="bg-white rounded-2xl max-w-md w-full p-8 hidden">
-            <div class="flex justify-between items-center mb-6">
-                <h3 class="text-2xl font-bold text-slate-900">Welcome Back</h3>
-                <button onclick="closeModal()" class="text-slate-400 hover:text-slate-600"><i data-lucide="x" class="w-6 h-6"></i></button>
-            </div>
-            <div class="space-y-4">
-                <div>
-                    <label class="block text-sm font-medium text-slate-700 mb-1">Email</label>
-                    <input type="email" class="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-brand-500 focus:border-brand-500 outline-none" placeholder="you@example.com">
-                </div>
-                <div>
-                    <label class="block text-sm font-medium text-slate-700 mb-1">Password</label>
-                    <input type="password" class="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-brand-500 focus:border-brand-500 outline-none" placeholder="••••••••">
-                </div>
-                <div class="flex justify-between items-center">
-                    <label class="flex items-center">
-                        <input type="checkbox" class="rounded border-slate-300 text-brand-600 focus:ring-brand-500">
-                        <span class="ml-2 text-sm text-slate-600">Remember me</span>
-                    </label>
-                    <a href="#" class="text-sm text-brand-600 hover:text-brand-700">Forgot password?</a>
-                </div>
-                <button class="w-full bg-brand-600 text-white py-3 rounded-lg font-medium hover:bg-brand-700 transition">Log In</button>
-                <p class="text-center text-slate-600 text-sm">Don't have an account? <button onclick="showModal('signup')" class="text-brand-600 font-medium">Sign up</button></p>
-            </div>
-        </div>
-    </div>
-
+    <!-- Scripts -->
+    <script src="js/main.js"></script>
     <script>
-        // Initialize Lucide icons
         lucide.createIcons();
-
-        // Role tab switching
-        function switchRoleTab(role) {
-            const athleteTab = document.getElementById('tab-athlete');
-            const coachTab = document.getElementById('tab-coach');
-            const athleteFeatures = document.getElementById('athlete-features');
-            const coachFeatures = document.getElementById('coach-features');
-
-            if (role === 'athlete') {
-                athleteTab.classList.add('tab-active');
-                athleteTab.classList.remove('text-slate-600');
-                coachTab.classList.remove('tab-active');
-                coachTab.classList.add('text-slate-600');
-                athleteFeatures.classList.remove('hidden');
-                coachFeatures.classList.add('hidden');
-            } else {
-                coachTab.classList.add('tab-active');
-                coachTab.classList.remove('text-slate-600');
-                athleteTab.classList.remove('tab-active');
-                athleteTab.classList.add('text-slate-600');
-                coachFeatures.classList.remove('hidden');
-                athleteFeatures.classList.add('hidden');
-            }
-        }
-
-        // Modal functions
-        let selectedRole = null;
-
-        function showModal(type) {
-            const overlay = document.getElementById('modal-overlay');
-            const roleSelectModal = document.getElementById('role-select-modal');
-            const signupModal = document.getElementById('signup-modal');
-            const loginModal = document.getElementById('login-modal');
-
-            overlay.classList.remove('hidden');
-            overlay.classList.add('flex');
-
-            // Hide all modals first
-            roleSelectModal.classList.add('hidden');
-            signupModal.classList.add('hidden');
-            loginModal.classList.add('hidden');
-
-            if (type === 'role-select') {
-                roleSelectModal.classList.remove('hidden');
-            } else if (type === 'signup') {
-                signupModal.classList.remove('hidden');
-                updateSignupForm();
-            } else if (type === 'login') {
-                loginModal.classList.remove('hidden');
-            } else if (type === 'contact' || type === 'demo') {
-                roleSelectModal.classList.remove('hidden');
-            }
-
-            lucide.createIcons();
-        }
-
-        function closeModal() {
-            const overlay = document.getElementById('modal-overlay');
-            const roleSelectModal = document.getElementById('role-select-modal');
-            const signupModal = document.getElementById('signup-modal');
-            const loginModal = document.getElementById('login-modal');
-
-            overlay.classList.add('hidden');
-            overlay.classList.remove('flex');
-            roleSelectModal.classList.add('hidden');
-            signupModal.classList.add('hidden');
-            loginModal.classList.add('hidden');
-            selectedRole = null;
-        }
-
-        function proceedToSignup(role) {
-            selectedRole = role;
-            showModal('signup');
-        }
-
-        function backToRoleSelect() {
-            selectedRole = null;
-            showModal('role-select');
-        }
-
-        function updateSignupForm() {
-            const badge = document.getElementById('selected-role-badge');
-            const athleteFields = document.getElementById('athlete-extra-fields');
-            const coachFields = document.getElementById('coach-extra-fields');
-
-            if (selectedRole === 'athlete') {
-                badge.className = 'inline-flex items-center space-x-2 px-4 py-2 rounded-full text-sm font-medium bg-athlete-100 text-athlete-700';
-                badge.innerHTML = '<i data-lucide="user" class="w-4 h-4"></i><span>Student-Athlete Sign Up</span>';
-                athleteFields.classList.remove('hidden');
-                coachFields.classList.add('hidden');
-            } else if (selectedRole === 'coach') {
-                badge.className = 'inline-flex items-center space-x-2 px-4 py-2 rounded-full text-sm font-medium bg-coach-100 text-coach-700';
-                badge.innerHTML = '<i data-lucide="users" class="w-4 h-4"></i><span>Coach Sign Up</span>';
-                athleteFields.classList.add('hidden');
-                coachFields.classList.remove('hidden');
-            }
-            lucide.createIcons();
-        }
-
-        function selectRole(role) {
-            proceedToSignup(role);
-        }
-
-        // Handle form submission
-        document.getElementById('signup-form').addEventListener('submit', function(e) {
-            e.preventDefault();
-            const password = document.getElementById('signup-password').value;
-            const confirm = document.getElementById('signup-confirm').value;
-
-            if (password !== confirm) {
-                alert('Passwords do not match!');
-                return;
-            }
-
-            // Simulate account creation
-            const button = this.querySelector('button[type="submit"]');
-            const originalText = button.innerHTML;
-            button.innerHTML = '<i data-lucide="loader-2" class="w-5 h-5 animate-spin"></i><span>Creating Account...</span>';
-            button.disabled = true;
-            lucide.createIcons();
-
-            setTimeout(() => {
-                alert('Welcome to Target Recruiter! Your account has been created.');
-                closeModal();
-                button.innerHTML = originalText;
-                button.disabled = false;
-                lucide.createIcons();
-            }, 2000);
-        });
-
-        // Close modal on overlay click
-        document.getElementById('modal-overlay').addEventListener('click', function(e) {
-            if (e.target === this) {
-                closeModal();
-            }
-        });
-
-        // Smooth scroll for navigation
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                }
-            });
-        });
-
-        // Intersection Observer for animations
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('slide-in');
-                }
-            });
-        }, observerOptions);
-
-        document.querySelectorAll('.card-hover').forEach(el => {
-            observer.observe(el);
-        });
     </script>
-<script src="https://deepsite.hf.co/deepsite-badge.js"></script>
 </body>
 </html>
+
